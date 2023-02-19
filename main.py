@@ -186,7 +186,8 @@ def main():
 
         
     except:
-        st.error("There is an error. Please check your text data.")
+#         st.error("There is an error. Please check your text data.")
+            pass
 
         # st.write(predict)
 
