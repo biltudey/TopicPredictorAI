@@ -110,7 +110,7 @@ def aboutMe():
     [![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/mr_biltu)
     
 
-    ### check [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://twitter.com/mr_biltu) account for outher project.
+    ### check [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/biltudey/) account for outher project.
 
     ## Support
     Any kind of help or facing any problem feel free to contact me.
