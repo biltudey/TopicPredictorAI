@@ -10,7 +10,7 @@ Given the raw text and it will skim the text.
 
 ## Test The Project
 
-https://biltudey-topicpredictorai-main-21uu5g.streamlit.app/
+https://topicpredictorai.streamlit.app/
 
 
 
