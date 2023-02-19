@@ -15,6 +15,13 @@ https://biltudey-topicpredictorai-main-21uu5g.streamlit.app/
 
 
 ## Demo
+Enter The Text
+![Screenshot](https://user-images.githubusercontent.com/94779899/219923107-626ed4c5-f5e4-4ac8-b62a-924e44eb716e.png)
+
+Output
+
+
+![Screenshot1](https://user-images.githubusercontent.com/94779899/219923117-97c26da9-2d92-4b3e-9525-e7d3eacab382.png)
 
 
 
