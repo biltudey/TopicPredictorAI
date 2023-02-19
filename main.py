@@ -86,7 +86,7 @@ def printText(pred_label,test_sentence):
 
 
 def main():
-    st.title("Skimming the text")
+    st.title("TopicPredictorAI")
     st.subheader("Enter The Text")
     raw_text = st.text_area(" ",)
         
