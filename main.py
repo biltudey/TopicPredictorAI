@@ -11,6 +11,11 @@ import random
 st.set_page_config(layout="wide")
 
 
+# You can disable all debugging logs using os.environ :
+
+
+# st.header('TopicPredictorAI')
+
 target = ['BACKGROUND','CONCLUSIONS', 'METHODS', 'OBJECTIVE','RESULTS']
 def preprocess(text):
     df = pd.DataFrame(text,columns=['text'])
@@ -74,15 +79,25 @@ def printText(pred_label,test_sentence):
         elif pred_label[i] == 4:
             RESULTS +="\n"+  test_sentence[i]
     if BACKGROUND != " ": 
-        st.write(f"**Background** :\n {BACKGROUND}\n")
+        m = f'<i><p style="font-family:Courier; color:#fc6b03; font-size: 20px;">Background</p></i><br>{BACKGROUND}'
+        st.markdown(m,unsafe_allow_html=True)
+        # st.write(f"**Background** :\n {BACKGROUND}\n")
     if OBJECTIVE !=" ":
-        st.write(f"**OBJECTIVE** :\n {OBJECTIVE}\n")
+        # st.write(f"**OBJECTIVE** :\n {OBJECTIVE}\n")
+        m = f'<i><p style="font-family:Courier; color:#fc6b03; font-size: 20px;">OBJECTIVE</p></i><br>{OBJECTIVE}'
+        st.markdown(m,unsafe_allow_html=True)
     if METHODS !=" ":
-        st.write(f"**METHODS** :\n {METHODS}\n")
+        # st.write(f"**METHODS** :\n {METHODS}\n")
+        m = f'<i><p style="font-family:Courier; color:#fc6b03; font-size: 20px;">METHODS</p></i><br>{METHODS}'
+        st.markdown(m,unsafe_allow_html=True)
     if RESULTS !=" ":
-        st.write(f"**RESULTS** :\n {RESULTS}\n")
+        # st.write(f"**RESULTS** :\n {RESULTS}\n")
+        m = f'<i><p style="font-family:Courier; color:#fc6b03; font-size: 20px;">RESULTS</p></i><br>{RESULTS}'
+        st.markdown(m,unsafe_allow_html=True)
     if CONCLUSIONS != " ":
-        st.write(f"**CONCLUSIONS** :\n {CONCLUSIONS}\n")
+        # st.write(f"**CONCLUSIONS** :\n {CONCLUSIONS}\n")
+        m = f'<i><p style="font-family:Courier; color:#fc6b03; font-size: 20px;">CONCLUSIONS</p></i><br>{CONCLUSIONS}'
+        st.markdown(m,unsafe_allow_html=True)
 
 def model(raw_text):
     
@@ -112,7 +127,7 @@ def aboutMe():
     [![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/mr_biltu)
     
 
-    ### check [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/biltudey/) account for outher project.
+    ### check [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/biltudey) account for outher project.
 
     ## Support
     Any kind of help or facing any problem feel free to contact me.
@@ -129,67 +144,62 @@ def main():
     
     """
     st.title("TopicPredictorAI")
-    try:
-        font_css = """
+    # try:
+    font_css = """
+    <style>
+    button[data-baseweb="tab"] > div[data-testid="stMarkdownContainer"] > p {
+    font-size: 24px;
+    }
+    </style>
+    """
+
+    st.write(font_css, unsafe_allow_html=True)
+    button_style = """
         <style>
-        button[data-baseweb="tab"] > div[data-testid="stMarkdownContainer"] > p {
-        font-size: 24px;
+        .stButton > button {
+            color: white;
+            background: black;
+            width: 100px;
+            height: 50px;
+            font: 50px;
         }
         </style>
+
+
         """
+    st.markdown(button_style, unsafe_allow_html=True)
 
-        st.write(font_css, unsafe_allow_html=True)
-        button_style = """
-            <style>
-            .stButton > button {
-                color: white;
-                background: black;
-                width: 100px;
-                height: 50px;
-                font: 50px;
-            }
-            </style>
+    tab1, tab2,  tab3 = st.tabs(["AI","About Me" ,"How to use"])
 
-
+    with tab1:
+        st.subheader("Enter The Text")
+        raw_text = st.text_area(" ",value='', height=None, max_chars=None, key=None)
+        
+        if st.button("Skim"):
+            if raw_text.strip() == "":
+                st.error("Please enter something")
+            else:
+                model(raw_text)
+    with tab2:
+        aboutMe()
+    with tab3:
+        text = """
+                    ### **Enter your abstract text data.**
+                    #### Something like this.
             """
-        st.markdown(button_style, unsafe_allow_html=True)
+        st.markdown(text,unsafe_allow_html=True)
+        st.image('./screenshot\Screenshot.png')
+        text = """
+                    ### **Then click the skim button.**
+                    #### Wait while text is processed by the model.
+                    #### After few second your data will look like this.
+            """
+        st.markdown(text,unsafe_allow_html=True)
 
-        tab1, tab2,  tab3 = st.tabs(["AI","About Me" ,"How to use"])
-
-        with tab1:
-            st.subheader("Enter The Text")
-            raw_text = st.text_area(" ",value='', height=None, max_chars=None, key=None)
-            
-            if st.button("Skim"):
-                if raw_text.strip() == "":
-                    st.error("Please enter something")
-                else:
-                    model(raw_text)
-        with tab2:
-            aboutMe()
-        with tab3:
-            text = """
-                        ### **Enter your abstract text data.**
-                        #### Something like this.
-                """
-            st.markdown(text,unsafe_allow_html=True)
-            st.image('screenshot\Screenshot.png')
-            text = """
-                        ### **Then click the skim button.**
-                        #### Wait while text is processed by the model.
-                        #### After few second your data will look like this.
-                """
-            st.markdown(text,unsafe_allow_html=True)
-
-            st.image('screenshot\Screenshot1.png')
-
-
+        st.image('./screenshot\Screenshot1.png')
         
-
-        
-    except:
-#         st.error("There is an error. Please check your text data.")
-            pass
+    # except:
+    #     st.error("There is an error. Please check your text data.")
 
         # st.write(predict)
 
