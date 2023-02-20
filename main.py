@@ -188,7 +188,7 @@ def main():
                     #### Something like this.
             """
         st.markdown(text,unsafe_allow_html=True)
-        st.image('./screenshot\Screenshot.png')
+#         st.image('./screenshot\Screenshot.png')
         text = """
                     ### **Then click the skim button.**
                     #### Wait while text is processed by the model.
@@ -196,7 +196,7 @@ def main():
             """
         st.markdown(text,unsafe_allow_html=True)
 
-        st.image('./screenshot\Screenshot1.png')
+#         st.image('./screenshot\Screenshot1.png')
         
     # except:
     #     st.error("There is an error. Please check your text data.")
