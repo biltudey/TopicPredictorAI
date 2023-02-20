@@ -1,11 +1,13 @@
 # from tensorflow.keras.models import load_model
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 import tensorflow as tf
 import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 import random
-tf.keras.utils.disable_interactive_logging()
+# tf.keras.utils.disable_interactive_logging()
 st.set_page_config(layout="wide")
 
 
